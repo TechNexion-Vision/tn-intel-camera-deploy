@@ -17,20 +17,20 @@
     "Sensor": [
       {
         "name": "tevs-ar0144",
-        "description": "TEVS AR0144 camera (CAM2, CSI port 2, I2C bus 2, addr 0x48).",
+        "description": "TEVS AR0144 camera (CAM1, CSI port 0, I2C bus 1, addr 0x48).",
         "MediaCtlConfig": [
           {
             "id": 0,
             "configMode": "AUTO",
-            "output": [1920, 1080],
+            "output": [1280, 800],
             "format": "V4L2_PIX_FMT_UYVY",
             "formats": [
               {
-                "name": "tevs $I2CBUS", "pad": 0, "width": 1920, "height": 1080,
+                "name": "tevs $I2CBUS", "pad": 0, "width": 1280, "height": 800,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16"
               },
               {
-                "name": "Intel IPU7 CSI2 $CSI_PORT", "pad": 0, "width": 1920, "height": 1080,
+                "name": "Intel IPU7 CSI2 $CSI_PORT", "pad": 0, "width": 1280, "height": 800,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16"
               }
             ],
@@ -135,7 +135,7 @@
         "StaticMetadata": {
           "supportedStreamConfig": [
             {
-              "format": "V4L2_PIX_FMT_UYVY", "size": [1920, 1080], "field": 0, "mcId": 0
+              "format": "V4L2_PIX_FMT_UYVY", "size": [1280, 800], "field": 0, "mcId": 0
             },
             {
               "format": "V4L2_PIX_FMT_UYVY", "size": [1280, 720], "field": 0, "mcId": 1
@@ -144,9 +144,9 @@
               "format": "V4L2_PIX_FMT_UYVY", "size": [640, 480], "field": 0, "mcId": 2
             }
           ],
-          "fpsRange": [ 10, 30, 10, 30 ]
+          "fpsRange": [ 10, 60, 10, 60 ]
         },
-        "supportedISysSizes": [[1920, 1080], [1280, 720], [640, 480]],
+        "supportedISysSizes": [[1280, 800], [1280, 720], [640, 480]],
         "supportedISysFormat": ["V4L2_PIX_FMT_UYVY"],
         "enableAIQ": false,
         "usePSysProcessor": false

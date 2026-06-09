@@ -17,7 +17,7 @@
     "Sensor": [
       {
         "name": "tevs-ar0234",
-        "description": "TEVS AR0234 camera (CAM1, CSI port 0, I2C bus 1, addr 0x48).",
+        "description": "TEVS AR0234 camera (CAM2, CSI port 2, I2C bus 2, addr 0x48).",
         "MediaCtlConfig": [
           {
             "id": 0,

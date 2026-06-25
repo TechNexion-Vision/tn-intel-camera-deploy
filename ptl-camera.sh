@@ -332,7 +332,7 @@ Package: ipu7-camera-ptl
 Version: 1.0
 Architecture: amd64
 Maintainer: TechNexion <support@technexion.com>
-Depends: libgstreamer1.0-0, gstreamer1.0-plugins-base, libdrm2, libva2
+Depends: libgstreamer1.0-0, gstreamer1.0-plugins-base, libdrm2, libva2, gstreamer1.0-vaapi, gstreamer1.0-plugins-bad, libjsoncpp25
 Description: Intel IPU7 Camera Stack for Panther Lake (TEVS AR0234)
  Includes ipu7-camera-bins ISP libraries, ipu7-camera-hal,
  icamerasrc GStreamer plugin, and TEVS sensor configuration.
@@ -366,7 +366,7 @@ EOF
     echo ""
     echo "Deploy to board:"
     echo "  sshpass -p ubuntu scp \"${DEB_FILE}\" ubuntu@<BOARD_IP>:/tmp/"
-    echo "  ssh ubuntu@<BOARD_IP> 'sudo dpkg -i /tmp/ipu7-camera-ptl.deb'"
+    echo "  ssh ubuntu@<BOARD_IP> 'sudo apt install /tmp/ipu7-camera-ptl.deb'"
     echo "==================================================================="
 }
 

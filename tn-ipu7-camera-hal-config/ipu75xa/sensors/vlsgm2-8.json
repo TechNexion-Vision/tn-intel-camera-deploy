@@ -17,7 +17,7 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max96724 a-2",
+                "name": "serdes-max9x a-2",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -41,7 +41,7 @@
                 "flag": 1
               },
               {
-                "name": "max96724 b-2",
+                "name": "serdes-max9x b-2",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -65,7 +65,7 @@
                 "flag": 1
               },
               {
-                "name": "max96724 c-2",
+                "name": "serdes-max9x c-2",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -89,7 +89,7 @@
                 "flag": 1
               },
               {
-                "name": "max96724 d-2",
+                "name": "serdes-max9x d-2",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -123,7 +123,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 a-2",
+                "name": "serdes-max9x a-2",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -131,7 +131,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 a-2",
+                "name": "serdes-max9x a-2",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -179,7 +179,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 b-2",
+                "name": "serdes-max9x b-2",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -187,7 +187,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 b-2",
+                "name": "serdes-max9x b-2",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -235,7 +235,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 c-2",
+                "name": "serdes-max9x c-2",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -243,7 +243,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 c-2",
+                "name": "serdes-max9x c-2",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -291,7 +291,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 d-2",
+                "name": "serdes-max9x d-2",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -299,7 +299,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 d-2",
+                "name": "serdes-max9x d-2",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,

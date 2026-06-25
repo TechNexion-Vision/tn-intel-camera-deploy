@@ -53,12 +53,12 @@ if [ "$TEST_MODE" = "MULTICAMx2-CSI0" ]; then
     icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
     device-name=vlsgm2-5 ! \
     "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! glimagesink sync=false --no-position \
+    $CONVERT ! xvimagesink sync=false --no-position \
 \
     icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
     device-name=vlsgm2-6 ! \
     "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! glimagesink sync=false --no-position
+    $CONVERT ! xvimagesink sync=false --no-position
 
 elif [ "$TEST_MODE" = "MULTICAMx2-CSI1" ]; then
    echo "Start $TEST_MODE Preview...."
@@ -66,12 +66,12 @@ elif [ "$TEST_MODE" = "MULTICAMx2-CSI1" ]; then
     icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
     device-name=vlsgm2-7 ! \
     "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! glimagesink sync=false --no-position \
+    $CONVERT ! xvimagesink sync=false --no-position \
 \
     icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
     device-name=vlsgm2-8 ! \
     "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! glimagesink sync=false --no-position
+    $CONVERT ! xvimagesink sync=false --no-position
 
 elif [ "$TEST_MODE" = "MULTICAMx4" ]; then
    echo "Start $TEST_MODE Preview...."
@@ -79,22 +79,22 @@ elif [ "$TEST_MODE" = "MULTICAMx4" ]; then
     icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
     device-name=vlsgm2-5 ! \
     "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! glimagesink sync=false --no-position \
+    $CONVERT ! xvimagesink sync=false --no-position \
 \
     icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
     device-name=vlsgm2-6 ! \
     "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! glimagesink sync=false --no-position \
+    $CONVERT ! xvimagesink sync=false --no-position \
 \
     icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
     device-name=vlsgm2-7 ! \
     "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! glimagesink sync=false --no-position \
+    $CONVERT ! xvimagesink sync=false --no-position \
 \
     icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
     device-name=vlsgm2-8 ! \
     "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! glimagesink sync=false --no-position
+    $CONVERT ! xvimagesink sync=false --no-position
 
 elif [ "$TEST_MODE" = "MULTICAMx4-FAKESINK" ]; then
    echo "Start $TEST_MODE...."
@@ -121,5 +121,5 @@ else
     icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
     device-name=$DEV_NAME ! \
     "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! glimagesink sync=false --no-position
+    $CONVERT ! xvimagesink sync=false --no-position
 fi

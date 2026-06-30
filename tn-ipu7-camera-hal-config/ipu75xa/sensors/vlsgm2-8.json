@@ -17,7 +17,7 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "serdes-max9x a-2",
+                "name": "max9x a-2",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -25,7 +25,7 @@
                 "flag": 1
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "sinkPad": 4,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -41,7 +41,7 @@
                 "flag": 1
               },
               {
-                "name": "serdes-max9x b-2",
+                "name": "max9x b-2",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -49,7 +49,7 @@
                 "flag": 1
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "sinkPad": 5,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -65,7 +65,7 @@
                 "flag": 1
               },
               {
-                "name": "serdes-max9x c-2",
+                "name": "max9x c-2",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -73,7 +73,7 @@
                 "flag": 1
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -89,7 +89,7 @@
                 "flag": 1
               },
               {
-                "name": "serdes-max9x d-2",
+                "name": "max9x d-2",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -97,7 +97,7 @@
                 "flag": 1
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "sinkPad": 7,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -123,7 +123,7 @@
                 "stream": 0
               },
               {
-                "name": "serdes-max9x a-2",
+                "name": "max9x a-2",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -131,7 +131,7 @@
                 "stream": 0
               },
               {
-                "name": "serdes-max9x a-2",
+                "name": "max9x a-2",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -139,7 +139,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "pad": 4,
                 "width": 1280,
                 "height": 720,
@@ -147,7 +147,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -179,7 +179,7 @@
                 "stream": 0
               },
               {
-                "name": "serdes-max9x b-2",
+                "name": "max9x b-2",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -187,7 +187,7 @@
                 "stream": 0
               },
               {
-                "name": "serdes-max9x b-2",
+                "name": "max9x b-2",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -195,7 +195,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "pad": 5,
                 "width": 1280,
                 "height": 720,
@@ -203,7 +203,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -235,7 +235,7 @@
                 "stream": 0
               },
               {
-                "name": "serdes-max9x c-2",
+                "name": "max9x c-2",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -243,7 +243,7 @@
                 "stream": 0
               },
               {
-                "name": "serdes-max9x c-2",
+                "name": "max9x c-2",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -251,7 +251,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "pad": 6,
                 "width": 1280,
                 "height": 720,
@@ -259,7 +259,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -291,7 +291,7 @@
                 "stream": 0
               },
               {
-                "name": "serdes-max9x d-2",
+                "name": "max9x d-2",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -299,7 +299,7 @@
                 "stream": 0
               },
               {
-                "name": "serdes-max9x d-2",
+                "name": "max9x d-2",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -307,7 +307,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "pad": 7,
                 "width": 1280,
                 "height": 720,
@@ -315,7 +315,7 @@
                 "stream": 0
               },
               {
-                "name": "max96724 c",
+                "name": "max9x c",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,

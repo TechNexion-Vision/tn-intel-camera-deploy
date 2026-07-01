@@ -17,7 +17,7 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x a-2",
+                "name": "max9x a-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -33,7 +33,7 @@
                 "flag": 1
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 1,
@@ -41,7 +41,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x b-2",
+                "name": "max9x b-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -57,7 +57,7 @@
                 "flag": 1
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 1,
                 "srcPad": 2,
@@ -65,7 +65,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c-2",
+                "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -81,7 +81,7 @@
                 "flag": 1
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 2,
                 "srcPad": 3,
@@ -89,7 +89,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x d-2",
+                "name": "max9x d-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -105,7 +105,7 @@
                 "flag": 1
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 3,
                 "srcPad": 4,
@@ -115,7 +115,7 @@
             ],
             "formats": [
               {
-                "name": "vlsgm2 27-0054",
+                "name": "vlsgm2 31-0054",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -123,7 +123,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x a-2",
+                "name": "max9x a-$CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -131,7 +131,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x a-2",
+                "name": "max9x a-$CSI_PORT",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -155,7 +155,7 @@
                 "stream": 0
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -163,7 +163,7 @@
                 "stream": 0
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "pad": 1,
                 "width": 1280,
                 "height": 720,
@@ -171,7 +171,7 @@
                 "stream": 0
               },
               {
-                "name": "vlsgm2 28-0055",
+                "name": "vlsgm2 32-0055",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -179,7 +179,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x b-2",
+                "name": "max9x b-$CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -187,7 +187,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x b-2",
+                "name": "max9x b-$CSI_PORT",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -211,7 +211,7 @@
                 "stream": 1
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -219,7 +219,7 @@
                 "stream": 1
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -227,7 +227,7 @@
                 "stream": 1
               },
               {
-                "name": "vlsgm2 29-0056",
+                "name": "vlsgm2 33-0056",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -235,7 +235,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c-2",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -243,7 +243,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c-2",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -267,7 +267,7 @@
                 "stream": 2
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -275,7 +275,7 @@
                 "stream": 2
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "pad": 3,
                 "width": 1280,
                 "height": 720,
@@ -283,7 +283,7 @@
                 "stream": 2
               },
               {
-                "name": "vlsgm2 30-0057",
+                "name": "vlsgm2 34-0057",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -291,7 +291,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-2",
+                "name": "max9x d-$CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -299,7 +299,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-2",
+                "name": "max9x d-$CSI_PORT",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -323,7 +323,7 @@
                 "stream": 3
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -331,7 +331,7 @@
                 "stream": 3
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "pad": 4,
                 "width": 1280,
                 "height": 720,
@@ -341,28 +341,28 @@
             ],
             "link": [
               {
-                "srcName": "Intel IPU7 CSI2 2",
+                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 1,
                 "sinkName": "Intel IPU7 ISYS Capture 16",
                 "sinkPad": 0,
                 "enable": true
               },
               {
-                "srcName": "Intel IPU7 CSI2 2",
+                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 2,
                 "sinkName": "Intel IPU7 ISYS Capture 17",
                 "sinkPad": 0,
                 "enable": true
               },
               {
-                "srcName": "Intel IPU7 CSI2 2",
+                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
                 "sinkName": "Intel IPU7 ISYS Capture 18",
                 "sinkPad": 0,
                 "enable": true
               },
               {
-                "srcName": "Intel IPU7 CSI2 2",
+                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 4,
                 "sinkName": "Intel IPU7 ISYS Capture 19",
                 "sinkPad": 0,
@@ -375,11 +375,11 @@
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
-                "name": "Intel IPU7 CSI2 2",
+                "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 27-0054",
+                "name": "vlsgm2 31-0054",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]

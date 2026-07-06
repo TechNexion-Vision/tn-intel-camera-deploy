@@ -13,27 +13,35 @@ export XDG_RUNTIME_DIR=/run/user/$UID
 # export cameraDebug=7
 # export GST_DEBUG_DUMP_DOT_DIR=./gst_debug/
 
-DEV_NAME=${1:-"tevs-ar0234-2"}
+# libcamhal config file on the board; override via env if needed
+CAMHAL_CONFIG="${CAMHAL_CONFIG:-/etc/camera/ipu75xa/libcamhal_configs.json}"
 
 DEFAULT_RES="1280x720"
 DEFAULT_FMT="UYVY"
-CAM_RES="${2:-$DEFAULT_RES}"
+
+# If $1 is a mode name (MULTICAMx*), treat it as TEST_MODE directly.
+# Otherwise treat $1 as DEV_NAME (single-cam path).
+if [[ "$1" == MULTICAM* ]]; then
+    TEST_MODE="$1"
+    DEV_NAME=""
+    CAM_RES="${2:-$DEFAULT_RES}"
+    CAM_FMT="${3:-$DEFAULT_FMT}"
+    IO_MODE="${4:-1}"
+else
+    DEV_NAME="${1:-tevs-ar0234-2}"
+    CAM_RES="${2:-$DEFAULT_RES}"
+    CAM_FMT="${3:-$DEFAULT_FMT}"
+    TEST_MODE="${4:-CAM_PREVIEW}"
+    IO_MODE="${5:-1}"
+fi
+
 IFS='x' read -r -a RES_ARRAY <<< "$CAM_RES"
 VIDEO_WIDTH=${RES_ARRAY[0]}
 VIDEO_HEIGHT=${RES_ARRAY[1]}
 
-CAM_FMT="${3:-$DEFAULT_FMT}"
-
-echo "device name: $DEV_NAME"
+echo "mode: $TEST_MODE"
+[ -n "$DEV_NAME" ] && echo "device name: $DEV_NAME"
 echo "width: $VIDEO_WIDTH, height: $VIDEO_HEIGHT, format=$CAM_FMT"
-
-DEFAULT_TEST_MODE="CAM_PREVIEW"
-TEST_MODE="${4:-$DEFAULT_TEST_MODE}"
-
-# IO mode: 1=mmap (default), 4=DMABuf
-IO_MODE="${5:-1}"
-
-echo $TEST_MODE
 
 # Caps and convert chain depend on IO mode
 if [ "$IO_MODE" = "4" ]; then
@@ -44,79 +52,74 @@ else
     CONVERT="videoconvert"
 fi
 
-if [ "$TEST_MODE" = "MULTICAMx2-CSI0" ]; then
-   echo "Start $TEST_MODE Preview...."
-   sudo -E gst-launch-1.0 \
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-5 ! \
-    "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! xvimagesink sync=false --no-position \
-\
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-6 ! \
-    "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! xvimagesink sync=false --no-position
+# Returns whitespace-separated vlsgm2 device names for a given CSI port,
+# parsed from libcamhal_configs.json entries of the form "vlsgm2-N-PORT".
+get_vlsgm2_devices() {
+    local port=$1
+    if [ ! -f "$CAMHAL_CONFIG" ]; then
+        echo "ERROR: $CAMHAL_CONFIG not found" >&2
+        return 1
+    fi
+    grep -oE '"vlsgm2-[0-9]+-'"$port"'"' "$CAMHAL_CONFIG" \
+        | tr -d '"' | sed "s/-${port}$//"
+}
 
-elif [ "$TEST_MODE" = "MULTICAMx2-CSI1" ]; then
-   echo "Start $TEST_MODE Preview...."
-   sudo -E gst-launch-1.0 \
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-7 ! \
-    "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! xvimagesink sync=false --no-position \
-\
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-8 ! \
-    "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! xvimagesink sync=false --no-position
+# Builds and runs a gst-launch-1.0 pipeline with one icamerasrc per device.
+# Usage: run_multicam <sink_type> <dev1> [dev2 ...]
+#   sink_type: "preview" or "fakesink"
+run_multicam() {
+    local sink_type=$1; shift
+    local -a devices=("$@")
 
-elif [ "$TEST_MODE" = "MULTICAMx4" ]; then
-   echo "Start $TEST_MODE Preview...."
-   sudo -E gst-launch-1.0 \
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-5 ! \
-    "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! xvimagesink sync=false --no-position \
-\
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-6 ! \
-    "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! xvimagesink sync=false --no-position \
-\
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-7 ! \
-    "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! xvimagesink sync=false --no-position \
-\
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-8 ! \
-    "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! xvimagesink sync=false --no-position
+    if [ ${#devices[@]} -eq 0 ]; then
+        echo "ERROR: no devices supplied to run_multicam" >&2
+        exit 1
+    fi
 
-elif [ "$TEST_MODE" = "MULTICAMx4-FAKESINK" ]; then
-   echo "Start $TEST_MODE...."
-   sudo -E gst-launch-1.0 \
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-5 ! \
-    "$SOURCE_CAPS" ! fakesink \
-\
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-6 ! \
-    "$SOURCE_CAPS" ! fakesink \
-\
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-7 ! \
-    "$SOURCE_CAPS" ! fakesink \
-\
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=vlsgm2-8 ! \
-    "$SOURCE_CAPS" ! fakesink
+    echo "Devices: ${devices[*]}"
+
+    local pipeline=""
+    for dev in "${devices[@]}"; do
+        pipeline+=" icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal device-name='$dev'"
+        pipeline+=" ! '$SOURCE_CAPS' ! queue !"
+        if [ "$sink_type" = "fakesink" ]; then
+            pipeline+=" fakesink"
+        else
+            pipeline+=" $CONVERT ! xvimagesink sync=false --no-position"
+        fi
+    done
+
+    # Kill any previous gst-launch holding video devices
+    sudo pkill -f gst-launch-1.0 2>/dev/null; sleep 0.3
+
+    eval sudo -E gst-launch-1.0 "$pipeline"
+}
+
+# ── Mode dispatch ──────────────────────────────────────────────────────────────
+
+if [ "$TEST_MODE" = "MULTICAMx4-CSI0" ]; then
+    echo "Start $TEST_MODE Preview...."
+    mapfile -t devs < <(get_vlsgm2_devices 0)
+    run_multicam preview "${devs[@]}"
+
+elif [ "$TEST_MODE" = "MULTICAMx4-CSI2" ]; then
+    echo "Start $TEST_MODE Preview...."
+    mapfile -t devs < <(get_vlsgm2_devices 2)
+    run_multicam preview "${devs[@]}"
+
+elif [ "$TEST_MODE" = "MULTICAMx8" ]; then
+    echo "Start $TEST_MODE Preview...."
+    mapfile -t devs0 < <(get_vlsgm2_devices 0)
+    mapfile -t devs2 < <(get_vlsgm2_devices 2)
+    run_multicam preview "${devs0[@]}" "${devs2[@]}"
 
 else
-   echo "Start Camera Preview...."
-   sudo -E gst-launch-1.0 \
-    icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
-    device-name=$DEV_NAME ! \
-    "$SOURCE_CAPS" ! queue ! \
-    $CONVERT ! xvimagesink sync=false --no-position
+    echo "Start Camera Preview...."
+    # Kill any previous gst-launch holding video devices
+    sudo pkill -f gst-launch-1.0 2>/dev/null; sleep 0.3
+    sudo -E gst-launch-1.0 \
+        icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
+        device-name=$DEV_NAME ! \
+        "$SOURCE_CAPS" ! queue ! \
+        $CONVERT ! xvimagesink sync=false --no-position
 fi

@@ -44,9 +44,6 @@ else
     CONVERT="videoconvert"
 fi
 
-# Kill any previous gst-launch holding video devices
-sudo pkill -f gst-launch-1.0 2>/dev/null; sleep 0.3
-
 if [ "$TEST_MODE" = "MULTICAMx2-CSI0" ]; then
    echo "Start $TEST_MODE Preview...."
    sudo -E gst-launch-1.0 \

@@ -2,17 +2,21 @@
 # ptl-camera.sh — Build and package the Intel IPU7 camera stack for Panther Lake.
 #
 # Usage:
-#   ./ptl-camera.sh        — package only (requires staging/ and ipu7-camera-bins/ to exist)
-#   ./ptl-camera.sh --all  — clone repos (if needed) + Docker build + package
+#   ./ptl-camera.sh        — package + bundle only (requires existing staging/ and kernel deb)
+#   ./ptl-camera.sh --all  — clone all repos + Docker build + kernel build + package + bundle
 #
 # Files needed alongside this script:
-#   Dockerfile.camera-builder   (same directory)
+#   Dockerfile.camera-builder       (same directory)
+#   package/install.sh              (bundled into tn-camera-ptl.tar.gz for board installation)
+#   package/launch_video_pipeline_ptl.sh  (installed to /usr/local/bin/ inside the camera deb)
 #
-# Output: ptl-camera-out/ipu7-camera-ptl.deb
+# Output:
+#   ptl-camera-out/ipu7-camera-ptl.deb   — camera userspace deb
+#   ptl-camera-out/tn-camera-ptl.tar.gz  — final deliverable (kernel deb + camera deb + install.sh)
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# All repos, staging, and the output .deb land under this directory.
+# All repos, staging, output debs, and the final tarball land under this directory.
 OUT_DIR="${SCRIPT_DIR}/ptl-camera-out"
 
 BUILD_MODE=false
@@ -28,24 +32,43 @@ for arg in "$@"; do
 done
 
 # ---------------------------------------------------------------------------
-# Repo definitions
+# Repo definitions — camera userspace + kernel overlay
+#
+# All repos are cloned into OUT_DIR/<name>/ so the whole build tree is
+# self-contained under ptl-camera-out/.
+#
+# Clone strategy:
+#   tag  → git clone --depth 1 --branch <ref>   (shallow, saves disk)
+#   branch → git clone --branch <ref>            (full, kernel requires history to build)
 # ---------------------------------------------------------------------------
 REPO_NAMES=(
     ipu7-camera-bins
     ipu7-camera-hal
     icamerasrc
+    tn-intel-linux-kernel-overlay
 )
 REPO_URLS=(
     "https://github.com/intel/ipu7-camera-bins.git"
     "https://github.com/intel/ipu7-camera-hal.git"
     "https://github.com/intel/icamerasrc.git"
+    "http://10.20.30.20:4000/camera/tn-intel-linux-kernel-overlay.git"
 )
 REPO_REFS=(
     "20251226_1140_191_PTL_PV_IoT"
     "20251226_1140_191_PTL_PV_IoT"
     "icamerasrc_slim_api"
+    "tn-ptl-camera-v6.17"
 )
-REPO_TYPES=(tag tag branch)
+REPO_TYPES=(tag tag branch branch)
+
+# ---------------------------------------------------------------------------
+# Kernel build configuration
+# Update these three variables when bumping to a new kernel version.
+# ---------------------------------------------------------------------------
+KERNEL_DIR="${OUT_DIR}/tn-intel-linux-kernel-overlay"
+KERNEL_BUILD_TAG="mainline-tracking-overlay-v6.17.11-ubuntu-260128T080735Z"
+KERNEL_BUILD_NUMBER="1000"
+KERNEL_BUILD_CONFIG="tn-ptl"
 
 # ---------------------------------------------------------------------------
 # Helper: return 0 if the repo at $dir already has the expected ref.
@@ -65,13 +88,15 @@ repo_has_ref() {
 }
 
 # ---------------------------------------------------------------------------
-# Step 2: Clone repos (only when --all)
+# Step 1: Clone repos (only when --all)
 #
-# Logic per repo:
+# Per-repo logic:
 #   - dir missing OR ref missing → (re)clone
-#   - dir exists AND ref exists  → skip
-# This preserves local-only repos (e.g. tn-ipu7-camera-hal-config) and
-# avoids redundant network fetches if repos were cloned in a previous run.
+#   - dir exists AND ref present → skip (avoids redundant network fetches)
+#
+# Tags use --depth 1 (shallow) to save disk space and clone time.
+# Branches are cloned without --depth because the kernel build.sh requires
+# a full git history (it embeds the commit count in the version string).
 # ---------------------------------------------------------------------------
 do_clone() {
     echo "[clone] Checking repos in: ${OUT_DIR}"
@@ -94,12 +119,12 @@ do_clone() {
         if [ "${type}" = "tag" ]; then
             git clone --depth 1 --branch "${ref}" "${url}" "${tmp_dir}"
         else
+            # Full clone for branch repos; kernel needs complete history to build.
             git clone --branch "${ref}" "${url}" "${tmp_dir}"
         fi \
         || {
             rm -rf "${tmp_dir}"
             echo "ERROR: Failed to clone ${name} from ${url}"
-            echo "  If this is a local-only repo, ensure it exists at: ${dir}"
             exit 1
         }
         rm -rf "${dir}"
@@ -109,7 +134,7 @@ do_clone() {
 }
 
 # ---------------------------------------------------------------------------
-# Step 3: Build Docker image (skip if already tagged ipu7-ptl-builder)
+# Step 2: Build Docker image (skip if already tagged ipu7-ptl-builder)
 #
 # The Dockerfile installs cmake, autoconf, GStreamer-dev, libdrm, etc.
 # Building happens only once; to force a rebuild: docker rmi ipu7-ptl-builder
@@ -132,7 +157,7 @@ do_docker_build() {
 }
 
 # ---------------------------------------------------------------------------
-# Step 4: Run Docker container → build HAL + icamerasrc → staging/
+# Step 3: Run Docker container → build HAL + icamerasrc → staging/
 #
 # The build script is passed inline via heredoc to bash -s (stdin), so no
 # separate entrypoint file is needed in the repository.
@@ -174,9 +199,6 @@ ICAM_DIR="${OUT_DIR}/icamerasrc"
 echo "=== PTL Camera Build (inside container) ==="
 
 # Apply TN config files into ipu7-camera-hal source tree before cmake.
-# ipu7-camera-hal (Intel upstream) lacks TEVS sensor JSON; tn-ipu7-camera-hal-config
-# provides libcamhal_configs.json and sensors/tevs-ar0234*.json so cmake install
-# automatically picks them up into staging/etc/camera/ipu75xa/.
 echo "[config] Applying tn-ipu7-camera-hal-config ..."
 HAL_CONFIG="${HAL_DIR}/config/linux/ipu75xa"
 cp "${CONFIG_REPO}/ipu75xa/libcamhal_configs.json" "${HAL_CONFIG}/"
@@ -184,10 +206,7 @@ cp "${CONFIG_REPO}/ipu75xa/sensors/"*.json         "${HAL_CONFIG}/sensors/"
 echo "[config] Done."
 
 # Install ipu7-camera-bins into the container's /usr/ (build dependency only).
-# cmake uses pkg-config to find ia_imaging-ipu75xa and other ISP libs;
-# their .so and .pc must be on system paths before cmake runs.
-# -P preserves the symlink chain (libfoo.so → libfoo.so.1 → libfoo.so.1.0.0)
-# so the linker resolves sonames correctly during the build.
+# -P preserves the symlink chain so the linker resolves sonames correctly.
 echo "[bins] Installing ipu7-camera-bins to /usr/ ..."
 cp -P "${BINS}/lib/"*.so*          /usr/lib/
 cp -r "${BINS}/include/"*          /usr/include/
@@ -196,12 +215,10 @@ ldconfig
 echo "[bins] Done."
 
 # Build ipu7-camera-hal with cmake.
-# DESTDIR redirects install into staging/ while preserving target-board paths:
-#   staging/usr/lib/libcamhal.so*, staging/usr/lib/libcamhal/plugins/ipu75xa.so
-#   staging/etc/camera/ipu75xa/   ← includes TN TEVS JSON from config step above
+# DESTDIR redirects install into staging/ while preserving target-board paths.
 echo "[hal] Building ipu7-camera-hal ..."
 cd "${HAL_DIR}"
-rm -rf build   # avoid stale CMakeCache from a previous interrupted run
+rm -rf build
 mkdir build && cd build
 
 PKG_CONFIG_PATH=/usr/lib/pkgconfig cmake \
@@ -220,9 +237,6 @@ make DESTDIR="${STAGING}" install
 echo "[hal] Done."
 
 # Copy libcamhal into container /usr/ so icamerasrc ./configure can find it.
-# cmake installed libcamhal.pc into staging/usr/lib/pkgconfig/, but pkg-config
-# searches /usr/lib/pkgconfig (system path) — copy makes it visible without
-# requiring PKG_CONFIG_PATH to point at staging.
 echo "[hal] Making libcamhal visible to pkg-config ..."
 cp -P "${STAGING}/usr/lib/libcamhal.so"*          /usr/lib/
 cp    "${STAGING}/usr/lib/pkgconfig/libcamhal.pc"  /usr/lib/pkgconfig/
@@ -230,13 +244,11 @@ cp -r "${STAGING}/usr/include/libcamhal"           /usr/include/
 ldconfig
 
 # Build icamerasrc with autotools.
-# CHROME_SLIM_CAMHAL=ON selects slim HAL API (required for PTL).
-# NOCONFIGURE=1 prevents autogen.sh from auto-calling ./configure so we can
-# pass our own flags. distclean removes stale Makefiles from a previous run.
+# CHROME_SLIM_CAMHAL=ON selects the slim HAL API required for PTL.
 echo "[icam] Building icamerasrc ..."
 cd "${ICAM_DIR}"
 
-if [ ! -f configure ]; then   # fresh clone has autogen.sh but no configure
+if [ ! -f configure ]; then
     NOCONFIGURE=1 ./autogen.sh
 fi
 
@@ -253,8 +265,7 @@ make DESTDIR="${STAGING}" install
 echo "[icam] Done."
 
 # Restore staging/ ownership to the host user.
-# Everything built in the container is owned by root (uid 0); without this
-# chown the host user cannot read or delete staging/ without sudo.
+# Without this, the host user cannot delete staging/ without sudo.
 if [ -n "${HOST_UID:-}" ] && [ -n "${HOST_GID:-}" ]; then
     echo "[chown] Restoring ownership to ${HOST_UID}:${HOST_GID} ..."
     chown -R "${HOST_UID}:${HOST_GID}" "${STAGING}"
@@ -274,11 +285,49 @@ DOCKER_SCRIPT
 }
 
 # ---------------------------------------------------------------------------
+# Step 4: Build kernel deb from tn-intel-linux-kernel-overlay
+#
+# Skips if linux-image-*.deb already exists in KERNEL_DIR/build/.
+# To force a rebuild, delete the existing debs:
+#   rm -f ptl-camera-out/tn-intel-linux-kernel-overlay/build/linux-image-*.deb
+# ---------------------------------------------------------------------------
+do_build_kernel() {
+    if [ ! -d "${KERNEL_DIR}" ]; then
+        echo "ERROR: Kernel repo not found at ${KERNEL_DIR}"
+        echo "  Run: ./ptl-camera.sh --all"
+        exit 1
+    fi
+
+    # Check for an existing non-dbg image deb; skip if found.
+    local existing
+    existing=$(ls "${KERNEL_DIR}/linux-image-"*.deb 2>/dev/null | grep -v '\-dbg' | head -1 || true)
+    if [ -n "${existing}" ]; then
+        echo "[kernel] SKIP build — deb already exists: $(basename "${existing}")"
+        echo "  To rebuild: rm ${KERNEL_DIR}/linux-image-*.deb"
+        return
+    fi
+
+    echo "[kernel] Building kernel deb (this may take 30+ minutes) ..."
+    echo "[kernel] Tag=${KERNEL_BUILD_TAG} Build=${KERNEL_BUILD_NUMBER} Config=${KERNEL_BUILD_CONFIG}"
+    cd "${KERNEL_DIR}"
+    ./build.sh -r no \
+        -t "${KERNEL_BUILD_TAG}" \
+        -b "${KERNEL_BUILD_NUMBER}" \
+        -c "${KERNEL_BUILD_CONFIG}" \
+    || {
+        echo "ERROR: Kernel build failed."
+        echo "  Check build logs in ${KERNEL_DIR}/build/"
+        exit 1
+    }
+    echo "[kernel] Kernel build complete."
+}
+
+# ---------------------------------------------------------------------------
 # Step 5: Merge staging + ipu7-camera-bins → .deb-work → ipu7-camera-ptl.deb
 #
 # staging/          contains: libcamhal, icamerasrc plugin, /etc/camera configs
-# ipu7-camera-bins/ contains: ISP algorithm .so, firmware, headers, pkgconfig
-# Both are merged into .deb-work, then dpkg-deb compresses to a .deb.
+# ipu7-camera-bins/ contains: ISP algorithm .so files
+# Both are merged into .deb-work, stripped of dev artifacts, then packed.
 # ---------------------------------------------------------------------------
 do_package() {
     echo "[package] Starting packaging ..."
@@ -287,7 +336,6 @@ do_package() {
     local DEB_WORK="${OUT_DIR}/.deb-work"
     local DEB_FILE="${OUT_DIR}/ipu7-camera-ptl.deb"
 
-    # Validate prerequisites
     if [ ! -d "${OUT_DIR}/staging" ]; then
         echo "ERROR: staging/ not found. Run: ./ptl-camera.sh --all"
         exit 1
@@ -305,13 +353,10 @@ do_package() {
     mkdir -p "${DEB_WORK}/DEBIAN"
     mkdir -p "${DEB_WORK}/usr/lib"
 
-    # Copy staging (libcamhal + icamerasrc plugin + /etc/camera configs)
     echo "[package] Copying staging artifacts ..."
     cp -a "${OUT_DIR}/staging/." "${DEB_WORK}/"
 
-    # Add ISP algorithm libs from ipu7-camera-bins.
-    # -P preserves the symlink chain (libfoo.so → libfoo.so.1 → libfoo.so.1.0.0)
-    # so the linker resolves the correct soname at runtime on the board.
+    # -P preserves symlink chains (libfoo.so → libfoo.so.1 → libfoo.so.1.0.0)
     echo "[package] Copying ipu7-camera-bins libraries ..."
     cp -P "${BINS}/lib/"*.so* "${DEB_WORK}/usr/lib/"
 
@@ -322,11 +367,14 @@ do_package() {
     find "${DEB_WORK}/usr/lib" -name "*.a"  -delete
     find "${DEB_WORK}/usr/lib" -name "*.la" -delete
 
-    # Firmware intentionally excluded: the board OS provides the correct version
-    # (ipu7ptl_fw.bin.zst). Installing an older ipu7-camera-bins firmware causes
-    # CSE authentication failure → IPU7 driver fails → ISYS never starts → no tevs probe.
+    # Install launch script into the deb so it's available to all users after install
+    install -Dm755 "${SCRIPT_DIR}/package/launch_video_pipeline_ptl.sh" \
+        "${DEB_WORK}/usr/local/bin/launch_video_pipeline_ptl.sh"
 
-    # DEBIAN/control
+    # Firmware intentionally excluded: the board OS provides the correct version.
+    # Installing an older ipu7-camera-bins firmware causes CSE authentication
+    # failure → IPU7 driver fails to start → no ISYS → no /dev/video nodes.
+
     cat > "${DEB_WORK}/DEBIAN/control" <<'EOF'
 Package: ipu7-camera-ptl
 Version: 1.0
@@ -340,7 +388,7 @@ Description: Intel IPU7 Camera Stack for Panther Lake (TEVS AR0234)
 EOF
 
     # postinst: refresh linker cache and clear GStreamer plugin registry so
-    # the new icamerasrc is picked up immediately without requiring a reboot.
+    # the new icamerasrc is discovered without requiring a reboot.
     cat > "${DEB_WORK}/DEBIAN/postinst" <<'EOF'
 #!/bin/bash
 set -e
@@ -359,14 +407,58 @@ EOF
     echo ""
     echo "[verify] Package contents (first 50 files):"
     dpkg -c "${DEB_FILE}" 2>/dev/null | head -50 || true
+    echo ""
+    echo "[package] Done: ${DEB_FILE}"
+}
+
+# ---------------------------------------------------------------------------
+# Step 6: Bundle kernel deb + camera deb + install.sh → tn-camera-ptl.tar.gz
+#
+# The tarball is self-contained: copy it to a board and run install.sh as root.
+# On re-run the tarball is always rebuilt to pick up the latest deb files.
+# ---------------------------------------------------------------------------
+do_bundle() {
+    echo "[bundle] Creating tn-camera-ptl.tar.gz ..."
+
+    local KERNEL_DEB
+    KERNEL_DEB=$(ls "${KERNEL_DIR}/linux-image-"*.deb 2>/dev/null | grep -v '\-dbg' | head -1 || true)
+    local CAMERA_DEB="${OUT_DIR}/ipu7-camera-ptl.deb"
+    local INSTALL_SH="${SCRIPT_DIR}/package/install.sh"
+    local PKG="tn-camera-ptl"
+    local PKG_DIR="${OUT_DIR}/${PKG}"
+    local TAR="${OUT_DIR}/${PKG}.tar.gz"
+
+    if [ -z "${KERNEL_DEB}" ]; then
+        echo "ERROR: Kernel deb not found in ${KERNEL_DIR}/"
+        echo "  Run: ./ptl-camera.sh --all"
+        exit 1
+    fi
+    if [ ! -f "${CAMERA_DEB}" ]; then
+        echo "ERROR: Camera deb not found: ${CAMERA_DEB}"
+        exit 1
+    fi
+    if [ ! -f "${INSTALL_SH}" ]; then
+        echo "ERROR: install.sh not found: ${INSTALL_SH}"
+        exit 1
+    fi
+
+    rm -rf "${PKG_DIR}"
+    mkdir -p "${PKG_DIR}"
+    cp "${KERNEL_DEB}" "${PKG_DIR}/"
+    cp "${CAMERA_DEB}" "${PKG_DIR}/"
+    cp "${INSTALL_SH}" "${PKG_DIR}/"
+    chmod +x "${PKG_DIR}/install.sh"
+
+    tar czf "${TAR}" -C "${OUT_DIR}" "${PKG}"
+    rm -rf "${PKG_DIR}"
 
     echo ""
     echo "==================================================================="
-    echo "Output: ${DEB_FILE}"
+    echo "Bundle: ${TAR}"
     echo ""
     echo "Deploy to board:"
-    echo "  sshpass -p ubuntu scp \"${DEB_FILE}\" ubuntu@<BOARD_IP>:/tmp/"
-    echo "  ssh ubuntu@<BOARD_IP> 'sudo apt install /tmp/ipu7-camera-ptl.deb'"
+    echo "  scp ${TAR} <user>@<BOARD_IP>:~/"
+    echo "  ssh <user>@<BOARD_IP> 'tar xf tn-camera-ptl.tar.gz && sudo ./tn-camera-ptl/install.sh'"
     echo "==================================================================="
 }
 
@@ -377,6 +469,8 @@ if $BUILD_MODE; then
     do_clone
     do_docker_build
     do_docker_run
+    do_build_kernel
 fi
 
 do_package
+do_bundle

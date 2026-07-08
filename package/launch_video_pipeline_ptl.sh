@@ -115,8 +115,6 @@ elif [ "$TEST_MODE" = "MULTICAMx8" ]; then
 
 else
     echo "Start Camera Preview...."
-    # Kill any previous gst-launch holding video devices
-    sudo pkill -f gst-launch-1.0 2>/dev/null; sleep 0.3
     sudo -E gst-launch-1.0 \
         icamerasrc num-buffers=-1 printfps=true io-mode=$IO_MODE scene-mode=normal \
         device-name=$DEV_NAME ! \

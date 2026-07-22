@@ -4,6 +4,8 @@
 # Usage:
 #   ./ptl-camera.sh        — package + bundle only (requires existing staging/ and kernel deb)
 #   ./ptl-camera.sh --all  — clone all repos + Docker build + kernel build + package + bundle
+#   ./ptl-camera.sh --all --kernel-branch=<branch>  — same, but clone
+#       tn-intel-linux-kernel-overlay at <branch> instead of the default below
 #
 # Files needed alongside this script:
 #   Dockerfile.camera-builder       (same directory)
@@ -20,6 +22,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OUT_DIR="${SCRIPT_DIR}/ptl-camera-out"
 
 BUILD_MODE=false
+KERNEL_BRANCH=""
 
 # ---------------------------------------------------------------------------
 # Parse args
@@ -27,7 +30,8 @@ BUILD_MODE=false
 for arg in "$@"; do
     case "$arg" in
         --all) BUILD_MODE=true ;;
-        *) echo "ERROR: Unknown argument: ${arg}"; echo "Usage: $0 [--all]"; exit 1 ;;
+        --kernel-branch=*) KERNEL_BRANCH="${arg#*=}" ;;
+        *) echo "ERROR: Unknown argument: ${arg}"; echo "Usage: $0 [--all] [--kernel-branch=<branch>]"; exit 1 ;;
     esac
 done
 
@@ -60,6 +64,11 @@ REPO_REFS=(
     "tn-ptl-camera-v6.17"
 )
 REPO_TYPES=(tag tag branch branch)
+
+# Override the kernel overlay branch when --kernel-branch=<branch> is given.
+if [ -n "${KERNEL_BRANCH}" ]; then
+    REPO_REFS[3]="${KERNEL_BRANCH}"
+fi
 
 # ---------------------------------------------------------------------------
 # Kernel build configuration

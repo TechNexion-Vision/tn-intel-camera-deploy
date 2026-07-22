@@ -2,9 +2,9 @@
   "CameraSettings": {
     "Sensor": [
       {
-        "name": "vlsgm2-4",
+        "name": "vlsgm2-11",
         "vcCount": 4,
-        "vcId": 3,
+        "vcId": 2,
         "vcGroupId": 0,
         "MediaCtlConfig": [
           {
@@ -17,7 +17,7 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -25,25 +25,25 @@
                 "flag": 1
               },
               {
-                "name": "max9x a",
-                "sinkPad": 7,
+                "name": "max9x c",
+                "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
-                "srcStream": 3,
+                "srcStream": 2,
                 "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
+                "sinkStream": 2,
+                "srcPad": 3,
+                "srcStream": 2,
                 "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -51,7 +51,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -59,7 +59,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 2,
                 "width": 4208,
                 "height": 3120,
@@ -67,20 +67,20 @@
                 "stream": 0
               },
               {
-                "name": "max9x a",
-                "pad": 7,
+                "name": "max9x c",
+                "pad": 6,
                 "width": 4208,
                 "height": 3120,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 0
               },
               {
-                "name": "max9x a",
+                "name": "max9x c",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
@@ -88,29 +88,29 @@
                 "width": 4208,
                 "height": 3120,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
+                "pad": 3,
                 "width": 4208,
                 "height": 3120,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 3",
+                "srcPad": 3,
+                "sinkName": "Intel IPU7 ISYS Capture 18",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 3",
+                "name": "Intel IPU7 ISYS Capture 18",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -118,7 +118,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -133,7 +133,7 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -141,25 +141,25 @@
                 "flag": 1
               },
               {
-                "name": "max9x a",
-                "sinkPad": 7,
+                "name": "max9x c",
+                "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
-                "srcStream": 3,
+                "srcStream": 2,
                 "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
+                "sinkStream": 2,
+                "srcPad": 3,
+                "srcStream": 2,
                 "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -167,7 +167,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -175,7 +175,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 2,
                 "width": 3840,
                 "height": 2160,
@@ -183,20 +183,20 @@
                 "stream": 0
               },
               {
-                "name": "max9x a",
-                "pad": 7,
+                "name": "max9x c",
+                "pad": 6,
                 "width": 3840,
                 "height": 2160,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 0
               },
               {
-                "name": "max9x a",
+                "name": "max9x c",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
@@ -204,29 +204,29 @@
                 "width": 3840,
                 "height": 2160,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
+                "pad": 3,
                 "width": 3840,
                 "height": 2160,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 3",
+                "srcPad": 3,
+                "sinkName": "Intel IPU7 ISYS Capture 18",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 3",
+                "name": "Intel IPU7 ISYS Capture 18",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -234,7 +234,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -249,7 +249,7 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -257,25 +257,25 @@
                 "flag": 1
               },
               {
-                "name": "max9x a",
-                "sinkPad": 7,
+                "name": "max9x c",
+                "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
-                "srcStream": 3,
+                "srcStream": 2,
                 "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
+                "sinkStream": 2,
+                "srcPad": 3,
+                "srcStream": 2,
                 "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -283,7 +283,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -291,7 +291,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 2,
                 "width": 2560,
                 "height": 1440,
@@ -299,20 +299,20 @@
                 "stream": 0
               },
               {
-                "name": "max9x a",
-                "pad": 7,
+                "name": "max9x c",
+                "pad": 6,
                 "width": 2560,
                 "height": 1440,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 0
               },
               {
-                "name": "max9x a",
+                "name": "max9x c",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
@@ -320,29 +320,29 @@
                 "width": 2560,
                 "height": 1440,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
+                "pad": 3,
                 "width": 2560,
                 "height": 1440,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 3",
+                "srcPad": 3,
+                "sinkName": "Intel IPU7 ISYS Capture 18",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 3",
+                "name": "Intel IPU7 ISYS Capture 18",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -350,7 +350,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -365,7 +365,7 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -373,25 +373,25 @@
                 "flag": 1
               },
               {
-                "name": "max9x a",
-                "sinkPad": 7,
+                "name": "max9x c",
+                "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
-                "srcStream": 3,
+                "srcStream": 2,
                 "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
+                "sinkStream": 2,
+                "srcPad": 3,
+                "srcStream": 2,
                 "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -399,7 +399,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -407,7 +407,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 2,
                 "width": 1920,
                 "height": 1080,
@@ -415,20 +415,20 @@
                 "stream": 0
               },
               {
-                "name": "max9x a",
-                "pad": 7,
+                "name": "max9x c",
+                "pad": 6,
                 "width": 1920,
                 "height": 1080,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 0
               },
               {
-                "name": "max9x a",
+                "name": "max9x c",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
@@ -436,29 +436,29 @@
                 "width": 1920,
                 "height": 1080,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
+                "pad": 3,
                 "width": 1920,
                 "height": 1080,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 3",
+                "srcPad": 3,
+                "sinkName": "Intel IPU7 ISYS Capture 18",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 3",
+                "name": "Intel IPU7 ISYS Capture 18",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -466,7 +466,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -481,7 +481,7 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -489,25 +489,25 @@
                 "flag": 1
               },
               {
-                "name": "max9x a",
-                "sinkPad": 7,
+                "name": "max9x c",
+                "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
-                "srcStream": 3,
+                "srcStream": 2,
                 "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
+                "sinkStream": 2,
+                "srcPad": 3,
+                "srcStream": 2,
                 "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -515,7 +515,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -523,7 +523,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 2,
                 "width": 1280,
                 "height": 720,
@@ -531,20 +531,20 @@
                 "stream": 0
               },
               {
-                "name": "max9x a",
-                "pad": 7,
+                "name": "max9x c",
+                "pad": 6,
                 "width": 1280,
                 "height": 720,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 0
               },
               {
-                "name": "max9x a",
+                "name": "max9x c",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
@@ -552,29 +552,29 @@
                 "width": 1280,
                 "height": 720,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
+                "pad": 3,
                 "width": 1280,
                 "height": 720,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 3",
+                "srcPad": 3,
+                "sinkName": "Intel IPU7 ISYS Capture 18",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 3",
+                "name": "Intel IPU7 ISYS Capture 18",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -582,7 +582,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -597,7 +597,7 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
                 "srcPad": 2,
@@ -605,25 +605,25 @@
                 "flag": 1
               },
               {
-                "name": "max9x a",
-                "sinkPad": 7,
+                "name": "max9x c",
+                "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
-                "srcStream": 3,
+                "srcStream": 2,
                 "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
                 "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
+                "sinkStream": 2,
+                "srcPad": 3,
+                "srcStream": 2,
                 "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -631,7 +631,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -639,7 +639,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x d-$CSI_PORT",
+                "name": "max9x c-$CSI_PORT",
                 "pad": 2,
                 "width": 640,
                 "height": 480,
@@ -647,20 +647,20 @@
                 "stream": 0
               },
               {
-                "name": "max9x a",
-                "pad": 7,
+                "name": "max9x c",
+                "pad": 6,
                 "width": 640,
                 "height": 480,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 0
               },
               {
-                "name": "max9x a",
+                "name": "max9x c",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
@@ -668,29 +668,29 @@
                 "width": 640,
                 "height": 480,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               },
               {
                 "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
+                "pad": 3,
                 "width": 640,
                 "height": 480,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
+                "stream": 2
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 3",
+                "srcPad": 3,
+                "sinkName": "Intel IPU7 ISYS Capture 18",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 3",
+                "name": "Intel IPU7 ISYS Capture 18",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -698,7 +698,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 d-$CSI_PORT",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]

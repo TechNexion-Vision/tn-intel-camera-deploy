@@ -17,54 +17,6 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x a-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 4,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 1,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 5,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 1,
-                "srcPad": 2,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
                 "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
@@ -73,7 +25,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -87,147 +39,11 @@
                 "srcPad": 3,
                 "srcStream": 2,
                 "flag": 1
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 7,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 3,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
-                "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 31-0054",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 2,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 4,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 1,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "vlsgm2 32-0055",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 2,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 5,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 2,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -251,7 +67,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 4208,
                 "height": 3120,
@@ -259,7 +75,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -281,97 +97,20 @@
                 "height": 3120,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 2
-              },
-              {
-                "name": "vlsgm2 34-0057",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 2,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 7,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
-                "width": 4208,
-                "height": 3120,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 18",
+                "name": "Intel IPU7 ISYS Capture 10",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -379,7 +118,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -394,54 +133,6 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x a-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 4,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 1,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 5,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 1,
-                "srcPad": 2,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
                 "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
@@ -450,7 +141,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -464,147 +155,11 @@
                 "srcPad": 3,
                 "srcStream": 2,
                 "flag": 1
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 7,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 3,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
-                "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 31-0054",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 2,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 4,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 1,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "vlsgm2 32-0055",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 2,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 5,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 2,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -628,7 +183,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 3840,
                 "height": 2160,
@@ -636,7 +191,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -658,97 +213,20 @@
                 "height": 2160,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 2
-              },
-              {
-                "name": "vlsgm2 34-0057",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 2,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 7,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
-                "width": 3840,
-                "height": 2160,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 18",
+                "name": "Intel IPU7 ISYS Capture 10",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -756,7 +234,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -771,54 +249,6 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x a-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 4,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 1,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 5,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 1,
-                "srcPad": 2,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
                 "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
@@ -827,7 +257,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -841,147 +271,11 @@
                 "srcPad": 3,
                 "srcStream": 2,
                 "flag": 1
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 7,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 3,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
-                "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 31-0054",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 2,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 4,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 1,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "vlsgm2 32-0055",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 2,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 5,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 2,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -1005,7 +299,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 2560,
                 "height": 1440,
@@ -1013,7 +307,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -1035,97 +329,20 @@
                 "height": 1440,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 2
-              },
-              {
-                "name": "vlsgm2 34-0057",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 2,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 7,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
-                "width": 2560,
-                "height": 1440,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 18",
+                "name": "Intel IPU7 ISYS Capture 10",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -1133,7 +350,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -1148,54 +365,6 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x a-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 4,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 1,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 5,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 1,
-                "srcPad": 2,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
                 "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
@@ -1204,7 +373,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1218,147 +387,11 @@
                 "srcPad": 3,
                 "srcStream": 2,
                 "flag": 1
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 7,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 3,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
-                "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 31-0054",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 2,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 4,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 1,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "vlsgm2 32-0055",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 2,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 5,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 2,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -1382,7 +415,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 1920,
                 "height": 1080,
@@ -1390,7 +423,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -1412,97 +445,20 @@
                 "height": 1080,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 2
-              },
-              {
-                "name": "vlsgm2 34-0057",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 2,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 7,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
-                "width": 1920,
-                "height": 1080,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 18",
+                "name": "Intel IPU7 ISYS Capture 10",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -1510,7 +466,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -1525,54 +481,6 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x a-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 4,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 1,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 5,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 1,
-                "srcPad": 2,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
                 "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
@@ -1581,7 +489,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1595,147 +503,11 @@
                 "srcPad": 3,
                 "srcStream": 2,
                 "flag": 1
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 7,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 3,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
-                "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 31-0054",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 2,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 4,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 1,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "vlsgm2 32-0055",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 2,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 5,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 2,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -1759,7 +531,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 1280,
                 "height": 720,
@@ -1767,7 +539,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -1789,97 +561,20 @@
                 "height": 720,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 2
-              },
-              {
-                "name": "vlsgm2 34-0057",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 2,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 7,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
-                "width": 1280,
-                "height": 720,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 18",
+                "name": "Intel IPU7 ISYS Capture 10",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -1887,7 +582,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -1902,54 +597,6 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "route": [
               {
-                "name": "max9x a-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 4,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 1,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 5,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 1,
-                "srcPad": 2,
-                "srcStream": 1,
-                "flag": 1
-              },
-              {
                 "name": "max9x c-$CSI_PORT",
                 "sinkPad": 0,
                 "sinkStream": 0,
@@ -1958,7 +605,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1972,147 +619,11 @@
                 "srcPad": 3,
                 "srcStream": 2,
                 "flag": 1
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 0,
-                "srcPad": 2,
-                "srcStream": 0,
-                "flag": 1
-              },
-              {
-                "name": "max9x c",
-                "sinkPad": 7,
-                "sinkStream": 0,
-                "srcPad": 0,
-                "srcStream": 3,
-                "flag": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "sinkPad": 0,
-                "sinkStream": 3,
-                "srcPad": 4,
-                "srcStream": 3,
-                "flag": 1
               }
             ],
             "formats": [
               {
-                "name": "vlsgm2 31-0054",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x a-$CSI_PORT",
-                "pad": 2,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 4,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 1,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "vlsgm2 32-0055",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x b-$CSI_PORT",
-                "pad": 2,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 5,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 2,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 1
-              },
-              {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -2136,7 +647,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 640,
                 "height": 480,
@@ -2144,7 +655,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -2166,97 +677,20 @@
                 "height": 480,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16",
                 "stream": 2
-              },
-              {
-                "name": "vlsgm2 34-0057",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x d-$CSI_PORT",
-                "pad": 2,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 7,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 0
-              },
-              {
-                "name": "max9x c",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 0,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
-              },
-              {
-                "name": "Intel IPU7 CSI2 $CSI_PORT",
-                "pad": 4,
-                "width": 640,
-                "height": 480,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16",
-                "stream": 3
               }
             ],
             "link": [
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
-                "sinkPad": 0,
-                "enable": true
-              },
-              {
-                "srcName": "Intel IPU7 CSI2 $CSI_PORT",
-                "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 18",
+                "name": "Intel IPU7 ISYS Capture 10",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -2264,7 +698,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 33-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]

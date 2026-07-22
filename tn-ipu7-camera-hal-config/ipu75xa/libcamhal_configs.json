@@ -47,10 +47,15 @@
             "vlsgm2-2-0",
             "vlsgm2-3-0",
             "vlsgm2-4-0",
-            "vlsgm2-5-2",
-            "vlsgm2-6-2",
-            "vlsgm2-7-2",
-            "vlsgm2-8-2",
+            "vlsgm2-5-1",
+
+            "vlsgm2-6-1",
+            "vlsgm2-7-1",
+            "vlsgm2-8-1",
+            "vlsgm2-9-2",
+            "vlsgm2-10-2",
+            "vlsgm2-11-2",
+            "vlsgm2-12-2"
         ],
         "videoStreamNum" : 2
     }

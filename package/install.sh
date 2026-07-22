@@ -42,6 +42,10 @@ info "Kernel deb : $(basename "${KERNEL_DEB}")"
 info "Camera deb : $(basename "${CAMERA_DEB}")"
 echo ""
 
+# Kernel release string (e.g. 6.17.0-tn-ptl-260128t080735z), used later to pin
+# the GRUB default entry. The deb's Package name is "linux-image-<release>".
+KERNEL_RELEASE="$(dpkg-deb -f "${KERNEL_DEB}" Package | sed 's/^linux-image-//')"
+
 # ---------------------------------------------------------------------------
 # Step 1: Install kernel
 # ---------------------------------------------------------------------------
@@ -66,13 +70,17 @@ GRUB_CFG=/etc/default/grub
 info "Backing up ${GRUB_CFG} → ${GRUB_CFG}.bak"
 cp "${GRUB_CFG}" "${GRUB_CFG}.bak"
 
-# 3a: Set GRUB_DEFAULT=0 so the newest kernel is the default boot entry
+# 3a: Pin GRUB_DEFAULT to this exact kernel's menu entry.
+# GRUB_DEFAULT=0 is NOT safe here: grub-mkconfig lists kernels in version-sorted
+# order, and a stock/HWE kernel (e.g. 7.0.0-28-generic) numerically outranks
+# this TN kernel (6.17.x), so "entry 0" would silently boot the wrong kernel.
+GRUB_DEFAULT_VALUE="Advanced options for Ubuntu>Ubuntu, with Linux ${KERNEL_RELEASE}"
 if grep -q '^GRUB_DEFAULT=' "${GRUB_CFG}"; then
-    sed -i 's/^GRUB_DEFAULT=.*/GRUB_DEFAULT=0/' "${GRUB_CFG}"
+    sed -i "s|^GRUB_DEFAULT=.*|GRUB_DEFAULT=\"${GRUB_DEFAULT_VALUE}\"|" "${GRUB_CFG}"
 else
-    echo 'GRUB_DEFAULT=0' >> "${GRUB_CFG}"
+    echo "GRUB_DEFAULT=\"${GRUB_DEFAULT_VALUE}\"" >> "${GRUB_CFG}"
 fi
-info "GRUB_DEFAULT set to 0."
+info "GRUB_DEFAULT pinned to: ${GRUB_DEFAULT_VALUE}"
 
 # 3b: Add i915.force_probe=7d51 to kernel cmdline (idempotent)
 if grep -q 'i915.force_probe=7d51' "${GRUB_CFG}"; then

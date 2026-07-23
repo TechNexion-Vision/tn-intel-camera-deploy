@@ -15,13 +15,14 @@ export XDG_RUNTIME_DIR=/run/user/$UID
 
 # libcamhal config file on the board; override via env if needed
 CAMHAL_CONFIG="${CAMHAL_CONFIG:-/etc/camera/ipu75xa/libcamhal_configs.json}"
+CAMERA_SINK="${CAMERA_SINK:-preview}"
 
 DEFAULT_RES="1280x720"
 DEFAULT_FMT="UYVY"
 
 # If $1 is a mode name (MULTICAMx*), treat it as TEST_MODE directly.
 # Otherwise treat $1 as DEV_NAME (single-cam path).
-if [[ "$1" == MULTICAM* ]]; then
+if [[ "${1:-}" == MULTICAM* ]]; then
     TEST_MODE="$1"
     DEV_NAME=""
     CAM_RES="${2:-$DEFAULT_RES}"
@@ -89,9 +90,6 @@ run_multicam() {
         fi
     done
 
-    # Kill any previous gst-launch holding video devices
-    sudo pkill -f gst-launch-1.0 2>/dev/null; sleep 0.3
-
     eval sudo -E gst-launch-1.0 "$pipeline"
 }
 
@@ -100,18 +98,28 @@ run_multicam() {
 if [ "$TEST_MODE" = "MULTICAMx4-CSI0" ]; then
     echo "Start $TEST_MODE Preview...."
     mapfile -t devs < <(get_vlsgm2_devices 0)
-    run_multicam preview "${devs[@]}"
+    run_multicam "$CAMERA_SINK" "${devs[@]}"
+
+elif [ "$TEST_MODE" = "MULTICAMx4-CSI1" ]; then
+    echo "Start $TEST_MODE Preview...."
+    mapfile -t devs < <(get_vlsgm2_devices 1)
+    run_multicam "$CAMERA_SINK" "${devs[@]}"
 
 elif [ "$TEST_MODE" = "MULTICAMx4-CSI2" ]; then
     echo "Start $TEST_MODE Preview...."
     mapfile -t devs < <(get_vlsgm2_devices 2)
-    run_multicam preview "${devs[@]}"
+    run_multicam "$CAMERA_SINK" "${devs[@]}"
 
-elif [ "$TEST_MODE" = "MULTICAMx8" ]; then
+elif [ "$TEST_MODE" = "MULTICAMx12" ]; then
     echo "Start $TEST_MODE Preview...."
     mapfile -t devs0 < <(get_vlsgm2_devices 0)
+    mapfile -t devs1 < <(get_vlsgm2_devices 1)
     mapfile -t devs2 < <(get_vlsgm2_devices 2)
-    run_multicam preview "${devs0[@]}" "${devs2[@]}"
+    run_multicam "$CAMERA_SINK" "${devs0[@]}" "${devs1[@]}" "${devs2[@]}"
+
+elif [[ "$TEST_MODE" == MULTICAM* ]]; then
+    echo "ERROR: unsupported multi-camera mode: $TEST_MODE" >&2
+    exit 2
 
 else
     echo "Start Camera Preview...."

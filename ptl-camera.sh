@@ -6,6 +6,8 @@
 #   ./ptl-camera.sh --all  — clone all repos + Docker build + kernel build + package + bundle
 #   ./ptl-camera.sh --all --kernel-branch=<branch>  — same, but clone
 #       tn-intel-linux-kernel-overlay at <branch> instead of the default below
+#   ./ptl-camera.sh --apply-hal-patches  — apply ipu7-camera-hal-patch/*.patch
+#       to the existing ipu7-camera-hal source before packaging
 #
 # Files needed alongside this script:
 #   Dockerfile.camera-builder       (same directory)
@@ -22,6 +24,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OUT_DIR="${SCRIPT_DIR}/ptl-camera-out"
 
 BUILD_MODE=false
+APPLY_HAL_PATCHES=false
 KERNEL_BRANCH=""
 
 # ---------------------------------------------------------------------------
@@ -30,8 +33,9 @@ KERNEL_BRANCH=""
 for arg in "$@"; do
     case "$arg" in
         --all) BUILD_MODE=true ;;
+        --apply-hal-patches) APPLY_HAL_PATCHES=true ;;
         --kernel-branch=*) KERNEL_BRANCH="${arg#*=}" ;;
-        *) echo "ERROR: Unknown argument: ${arg}"; echo "Usage: $0 [--all] [--kernel-branch=<branch>]"; exit 1 ;;
+        *) echo "ERROR: Unknown argument: ${arg}"; echo "Usage: $0 [--all] [--apply-hal-patches] [--kernel-branch=<branch>]"; exit 1 ;;
     esac
 done
 
@@ -139,6 +143,49 @@ do_clone() {
         rm -rf "${dir}"
         mv "${tmp_dir}" "${dir}"
         echo "[clone] Done: ${name}"
+    done
+}
+
+# ---------------------------------------------------------------------------
+# Apply local HAL patches in lexical filename order.
+#
+# A reverse check distinguishes an already-applied patch from a source tree
+# that does not match the patch baseline. The latter remains a hard failure.
+# ---------------------------------------------------------------------------
+do_apply_hal_patches() {
+    local hal_dir="${OUT_DIR}/ipu7-camera-hal"
+    local patch_dir="${SCRIPT_DIR}/ipu7-camera-hal-patch"
+    local patches=()
+    local patch_file
+
+    [ -d "${hal_dir}/.git" ] || {
+        echo "ERROR: HAL source repo not found: ${hal_dir}"
+        exit 1
+    }
+    [ -d "${patch_dir}" ] || {
+        echo "ERROR: HAL patch directory not found: ${patch_dir}"
+        exit 1
+    }
+
+    shopt -s nullglob
+    patches=("${patch_dir}"/*.patch)
+    shopt -u nullglob
+    [ "${#patches[@]}" -gt 0 ] || {
+        echo "ERROR: No HAL patches found in ${patch_dir}"
+        exit 1
+    }
+
+    for patch_file in "${patches[@]}"; do
+        echo "[patch] Checking $(basename "${patch_file}") ..."
+        if git -C "${hal_dir}" apply --check "${patch_file}"; then
+            git -C "${hal_dir}" apply "${patch_file}"
+            echo "[patch] Applied $(basename "${patch_file}")"
+        elif git -C "${hal_dir}" apply --reverse --check "${patch_file}"; then
+            echo "[patch] SKIP $(basename "${patch_file}") (already applied)"
+        else
+            echo "ERROR: Cannot apply $(basename "${patch_file}") to ${hal_dir}"
+            exit 1
+        fi
     done
 }
 
@@ -476,6 +523,16 @@ do_bundle() {
 # ---------------------------------------------------------------------------
 if $BUILD_MODE; then
     do_clone
+fi
+
+if $APPLY_HAL_PATCHES; then
+    do_apply_hal_patches
+    if ! $BUILD_MODE; then
+        exit 0
+    fi
+fi
+
+if $BUILD_MODE; then
     do_docker_build
     do_docker_run
     do_build_kernel

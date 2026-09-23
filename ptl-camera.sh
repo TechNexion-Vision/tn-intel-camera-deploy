@@ -59,13 +59,13 @@ REPO_URLS=(
     "https://github.com/intel/ipu7-camera-bins.git"
     "https://github.com/intel/ipu7-camera-hal.git"
     "https://github.com/intel/icamerasrc.git"
-    "http://10.20.30.20:4000/camera/tn-intel-linux-kernel-overlay.git"
+    "https://github.com/TechNexion-Vision/tn-intel-linux-kernel-overlay.git"
 )
 REPO_REFS=(
     "20251226_1140_191_PTL_PV_IoT"
     "20251226_1140_191_PTL_PV_IoT"
     "icamerasrc_slim_api"
-    "tn-ptl-camera-v6.17"
+    "lexcom"
 )
 REPO_TYPES=(tag tag branch branch)
 

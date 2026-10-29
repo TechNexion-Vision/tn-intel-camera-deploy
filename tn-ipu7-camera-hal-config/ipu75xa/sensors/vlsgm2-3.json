@@ -115,7 +115,7 @@
             ],
             "formats": [
               {
-                "name": "vlsgm2 23-0054",
+                "name": "vlsgm2 a-$CSI_PORT",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -171,7 +171,7 @@
                 "stream": 0
               },
               {
-                "name": "vlsgm2 24-0055",
+                "name": "vlsgm2 b-$CSI_PORT",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -227,7 +227,7 @@
                 "stream": 1
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -283,7 +283,7 @@
                 "stream": 2
               },
               {
-                "name": "vlsgm2 26-0057",
+                "name": "vlsgm2 d-$CSI_PORT",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -379,7 +379,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -492,7 +492,7 @@
             ],
             "formats": [
               {
-                "name": "vlsgm2 23-0054",
+                "name": "vlsgm2 a-$CSI_PORT",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -548,7 +548,7 @@
                 "stream": 0
               },
               {
-                "name": "vlsgm2 24-0055",
+                "name": "vlsgm2 b-$CSI_PORT",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -604,7 +604,7 @@
                 "stream": 1
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -660,7 +660,7 @@
                 "stream": 2
               },
               {
-                "name": "vlsgm2 26-0057",
+                "name": "vlsgm2 d-$CSI_PORT",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -756,7 +756,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -869,7 +869,7 @@
             ],
             "formats": [
               {
-                "name": "vlsgm2 23-0054",
+                "name": "vlsgm2 a-$CSI_PORT",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -925,7 +925,7 @@
                 "stream": 0
               },
               {
-                "name": "vlsgm2 24-0055",
+                "name": "vlsgm2 b-$CSI_PORT",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -981,7 +981,7 @@
                 "stream": 1
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -1037,7 +1037,7 @@
                 "stream": 2
               },
               {
-                "name": "vlsgm2 26-0057",
+                "name": "vlsgm2 d-$CSI_PORT",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -1133,7 +1133,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -1246,7 +1246,7 @@
             ],
             "formats": [
               {
-                "name": "vlsgm2 23-0054",
+                "name": "vlsgm2 a-$CSI_PORT",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -1302,7 +1302,7 @@
                 "stream": 0
               },
               {
-                "name": "vlsgm2 24-0055",
+                "name": "vlsgm2 b-$CSI_PORT",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -1358,7 +1358,7 @@
                 "stream": 1
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -1414,7 +1414,7 @@
                 "stream": 2
               },
               {
-                "name": "vlsgm2 26-0057",
+                "name": "vlsgm2 d-$CSI_PORT",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -1510,7 +1510,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -1623,7 +1623,7 @@
             ],
             "formats": [
               {
-                "name": "vlsgm2 23-0054",
+                "name": "vlsgm2 a-$CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -1679,7 +1679,7 @@
                 "stream": 0
               },
               {
-                "name": "vlsgm2 24-0055",
+                "name": "vlsgm2 b-$CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -1735,7 +1735,7 @@
                 "stream": 1
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -1791,7 +1791,7 @@
                 "stream": 2
               },
               {
-                "name": "vlsgm2 26-0057",
+                "name": "vlsgm2 d-$CSI_PORT",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -1887,7 +1887,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
@@ -2000,7 +2000,7 @@
             ],
             "formats": [
               {
-                "name": "vlsgm2 23-0054",
+                "name": "vlsgm2 a-$CSI_PORT",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -2056,7 +2056,7 @@
                 "stream": 0
               },
               {
-                "name": "vlsgm2 24-0055",
+                "name": "vlsgm2 b-$CSI_PORT",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -2112,7 +2112,7 @@
                 "stream": 1
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -2168,7 +2168,7 @@
                 "stream": 2
               },
               {
-                "name": "vlsgm2 26-0057",
+                "name": "vlsgm2 d-$CSI_PORT",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -2264,7 +2264,7 @@
                 "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "vlsgm2 25-0056",
+                "name": "vlsgm2 c-$CSI_PORT",
                 "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]

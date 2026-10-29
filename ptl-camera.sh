@@ -57,7 +57,7 @@ REPO_REFS=(
     "20251226_1140_191_PTL_PV_IoT"
     "20251226_1140_191_PTL_PV_IoT"
     "icamerasrc_slim_api"
-    "main"
+    "asus"
 )
 REPO_TYPES=(tag tag branch branch)
 

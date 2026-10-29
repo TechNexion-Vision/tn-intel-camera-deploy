@@ -15,6 +15,7 @@ The build process produces a self-contained deployment bundle containing:
 |---|---|---|
 | `main` | Standard TechNexion Panther Lake build | `main` |
 | `lexcom` | Lexcom-specific build | `lexcom` |
+| `asus` | ASUS RUC-2000H GMSL port0/port1 | `asus` |
 
 Kernel configurations and patches are provided by:
 
@@ -121,3 +122,18 @@ stack.
 - Camera firmware is not included; the target operating system provides the
   required firmware.
 - Upstream Intel camera components remain subject to their respective licenses.
+
+## ASUS RUC-2000H GMSL settings
+
+The `asus` branch installs Camera1 on CSI port0 and Camera2 on CSI port1.
+Camera2 uses `max9x b` and Capture8..11; set its BIOS MIPI port to 1.
+Use CPHY, two lanes, PPR value/unit 2/4 and Degree 0 for the tested wiring.
+
+Build with the matching `asus` kernel overlay branch, which adds the
+ASUS-specific GPIO PWDNB release before MAX9x probe. JSON changes alone
+cannot fix a failed hardware probe. Both branches must be published before
+a fresh clone can build this configuration.
+
+Four Camera2 sensors probed; `vlsgm2-6` streamed 1280x720 UYVY with the GPIO
+fix. Other Camera2 streams, simultaneous capture and suspend/resume remain
+unverified. Kernel stop/close timeout messages are a separate open issue.

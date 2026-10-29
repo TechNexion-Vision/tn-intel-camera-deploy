@@ -25,7 +25,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 4,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -49,7 +49,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 5,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -73,7 +73,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -97,7 +97,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 7,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -139,7 +139,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 4,
                 "width": 4208,
                 "height": 3120,
@@ -147,7 +147,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -195,7 +195,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 5,
                 "width": 4208,
                 "height": 3120,
@@ -203,7 +203,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -251,7 +251,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 4208,
                 "height": 3120,
@@ -259,7 +259,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -307,7 +307,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 7,
                 "width": 4208,
                 "height": 3120,
@@ -315,7 +315,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 4208,
                 "height": 3120,
@@ -343,35 +343,35 @@
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
+                "sinkName": "Intel IPU7 ISYS Capture 8",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
+                "sinkName": "Intel IPU7 ISYS Capture 9",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 11",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 16",
+                "name": "Intel IPU7 ISYS Capture 8",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -402,7 +402,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 4,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -426,7 +426,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 5,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -450,7 +450,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -474,7 +474,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 7,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -516,7 +516,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 4,
                 "width": 3840,
                 "height": 2160,
@@ -524,7 +524,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -572,7 +572,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 5,
                 "width": 3840,
                 "height": 2160,
@@ -580,7 +580,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -628,7 +628,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 3840,
                 "height": 2160,
@@ -636,7 +636,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -684,7 +684,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 7,
                 "width": 3840,
                 "height": 2160,
@@ -692,7 +692,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 3840,
                 "height": 2160,
@@ -720,35 +720,35 @@
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
+                "sinkName": "Intel IPU7 ISYS Capture 8",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
+                "sinkName": "Intel IPU7 ISYS Capture 9",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 11",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 16",
+                "name": "Intel IPU7 ISYS Capture 8",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -779,7 +779,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 4,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -803,7 +803,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 5,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -827,7 +827,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -851,7 +851,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 7,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -893,7 +893,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 4,
                 "width": 2560,
                 "height": 1440,
@@ -901,7 +901,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -949,7 +949,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 5,
                 "width": 2560,
                 "height": 1440,
@@ -957,7 +957,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -1005,7 +1005,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 2560,
                 "height": 1440,
@@ -1013,7 +1013,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -1061,7 +1061,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 7,
                 "width": 2560,
                 "height": 1440,
@@ -1069,7 +1069,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 2560,
                 "height": 1440,
@@ -1097,35 +1097,35 @@
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
+                "sinkName": "Intel IPU7 ISYS Capture 8",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
+                "sinkName": "Intel IPU7 ISYS Capture 9",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 11",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 16",
+                "name": "Intel IPU7 ISYS Capture 8",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -1156,7 +1156,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 4,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1180,7 +1180,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 5,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1204,7 +1204,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1228,7 +1228,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 7,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1270,7 +1270,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 4,
                 "width": 1920,
                 "height": 1080,
@@ -1278,7 +1278,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -1326,7 +1326,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 5,
                 "width": 1920,
                 "height": 1080,
@@ -1334,7 +1334,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -1382,7 +1382,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 1920,
                 "height": 1080,
@@ -1390,7 +1390,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -1438,7 +1438,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 7,
                 "width": 1920,
                 "height": 1080,
@@ -1446,7 +1446,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 1920,
                 "height": 1080,
@@ -1474,35 +1474,35 @@
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
+                "sinkName": "Intel IPU7 ISYS Capture 8",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
+                "sinkName": "Intel IPU7 ISYS Capture 9",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 11",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 16",
+                "name": "Intel IPU7 ISYS Capture 8",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -1533,7 +1533,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 4,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1557,7 +1557,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 5,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1581,7 +1581,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1605,7 +1605,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 7,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1647,7 +1647,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 4,
                 "width": 1280,
                 "height": 720,
@@ -1655,7 +1655,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -1703,7 +1703,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 5,
                 "width": 1280,
                 "height": 720,
@@ -1711,7 +1711,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -1759,7 +1759,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 1280,
                 "height": 720,
@@ -1767,7 +1767,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -1815,7 +1815,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 7,
                 "width": 1280,
                 "height": 720,
@@ -1823,7 +1823,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 1280,
                 "height": 720,
@@ -1851,35 +1851,35 @@
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
+                "sinkName": "Intel IPU7 ISYS Capture 8",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
+                "sinkName": "Intel IPU7 ISYS Capture 9",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 11",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 16",
+                "name": "Intel IPU7 ISYS Capture 8",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {
@@ -1910,7 +1910,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 4,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1934,7 +1934,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 5,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1958,7 +1958,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 6,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -1982,7 +1982,7 @@
                 "flag": 1
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "sinkPad": 7,
                 "sinkStream": 0,
                 "srcPad": 0,
@@ -2024,7 +2024,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 4,
                 "width": 640,
                 "height": 480,
@@ -2032,7 +2032,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -2080,7 +2080,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 5,
                 "width": 640,
                 "height": 480,
@@ -2088,7 +2088,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -2136,7 +2136,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 6,
                 "width": 640,
                 "height": 480,
@@ -2144,7 +2144,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -2192,7 +2192,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 7,
                 "width": 640,
                 "height": 480,
@@ -2200,7 +2200,7 @@
                 "stream": 0
               },
               {
-                "name": "max9x c",
+                "name": "max9x b",
                 "pad": 0,
                 "width": 640,
                 "height": 480,
@@ -2228,35 +2228,35 @@
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 1,
-                "sinkName": "Intel IPU7 ISYS Capture 16",
+                "sinkName": "Intel IPU7 ISYS Capture 8",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 2,
-                "sinkName": "Intel IPU7 ISYS Capture 17",
+                "sinkName": "Intel IPU7 ISYS Capture 9",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 3,
-                "sinkName": "Intel IPU7 ISYS Capture 18",
+                "sinkName": "Intel IPU7 ISYS Capture 10",
                 "sinkPad": 0,
                 "enable": true
               },
               {
                 "srcName": "Intel IPU7 CSI2 $CSI_PORT",
                 "srcPad": 4,
-                "sinkName": "Intel IPU7 ISYS Capture 19",
+                "sinkName": "Intel IPU7 ISYS Capture 11",
                 "sinkPad": 0,
                 "enable": true
               }
             ],
             "videonode": [
               {
-                "name": "Intel IPU7 ISYS Capture 16",
+                "name": "Intel IPU7 ISYS Capture 8",
                 "videoNodeType": "VIDEO_GENERIC"
               },
               {

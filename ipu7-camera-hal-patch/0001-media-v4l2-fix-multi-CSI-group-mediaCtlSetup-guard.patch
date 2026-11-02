@@ -1,0 +1,81 @@
+From f02b3273938bb0c92fd0303bc5cd4b54658c37cb Mon Sep 17 00:00:00 2001
+From: yifan wang <yifan.wang@technexion.com>
+Date: Wed, 22 Jul 2026 16:01:30 +0800
+Subject: [PATCH] media: v4l2: fix multi-CSI-group mediaCtlSetup guard
+
+Replace single bool mIsMediaCtlSetup with a per-entity set so that
+each deserializer group (e.g. max9x a on CSI2-0, max9x c on CSI2-2)
+can complete its own media graph setup independently.
+
+Without this fix, in a MULTICAMx8 scenario the first group sets
+mIsMediaCtlSetup=true and the second group is skipped, leaving its
+CSI media graph unconfigured and causing VIDIOC_STREAMON to fail
+with ENOLINK ("Link has been severed").
+
+Also clear setup state in mediaCtlClear() to allow correct re-setup
+after camera close/reopen.
+---
+ src/v4l2/MediaControl.cpp | 10 ++++++----
+ src/v4l2/MediaControl.h   |  3 ++-
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/v4l2/MediaControl.cpp b/src/v4l2/MediaControl.cpp
+index c81b19e..23aa96b 100644
+--- a/src/v4l2/MediaControl.cpp
++++ b/src/v4l2/MediaControl.cpp
+@@ -130,7 +130,6 @@ MediaControl::MediaControl(const char* devName) : mDevName(devName) {
+     LOG1("@%s device: %s", __func__, devName);
+ // VIRTUAL_CHANNEL_S
+
+-    mIsMediaCtlSetup = false;
+ // VIRTUAL_CHANNEL_E
+
+     int ret = initEntities();
+@@ -922,11 +921,11 @@ int MediaControl::mediaCtlSetup(int cameraId, MediaCtlConf* mc, int width, int h
+     AutoMutex lock(sLock);
+
+     if (!mc->routings.empty()) {
+-        if (mIsMediaCtlSetup) {
++        const std::string& firstEntity = mc->routings.begin()->first;
++        if (mSetupRoutingEntities.count(firstEntity)) {
+             return OK;
+-        } else {
+-            mIsMediaCtlSetup = true;
+         }
++        mSetupRoutingEntities.insert(firstEntity);
+     }
+
+ // VIRTUAL_CHANNEL_E
+@@ -980,6 +979,9 @@ void MediaControl::mediaCtlClear(int cameraId, MediaCtlConf* mc) {
+     LOG1("<id%d> %s", cameraId, __func__);
+
+     // VIRTUAL_CHANNEL_S
++    for (auto& routing : mc->routings) {
++        mSetupRoutingEntities.erase(routing.first);
++    }
+     (void)setRouting(cameraId, mc, false);
+     // VIRTUAL_CHANNEL_E
+ }
+diff --git a/src/v4l2/MediaControl.h b/src/v4l2/MediaControl.h
+index 8d1a958..99ee61f 100644
+--- a/src/v4l2/MediaControl.h
++++ b/src/v4l2/MediaControl.h
+@@ -30,6 +30,7 @@
+ #include <unistd.h>
+
+ #include <string>
++#include <set>
+ #include <vector>
+
+ #include <v4l2_device.h>
+@@ -328,7 +329,7 @@ class MediaControl {
+     static Mutex sLock;
+ // VIRTUAL_CHANNEL_S
+
+-    bool mIsMediaCtlSetup;
++    std::set<std::string> mSetupRoutingEntities;
+ // VIRTUAL_CHANNEL_E
+ };
+
+--
+2.34.1

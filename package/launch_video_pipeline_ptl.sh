@@ -102,15 +102,15 @@ if [ "$TEST_MODE" = "MULTICAMx4-CSI0" ]; then
     mapfile -t devs < <(get_vlsgm2_devices 0)
     run_multicam preview "${devs[@]}"
 
-elif [ "$TEST_MODE" = "MULTICAMx4-CSI2" ]; then
+elif [ "$TEST_MODE" = "MULTICAMx4-CSI1" ]; then
     echo "Start $TEST_MODE Preview...."
-    mapfile -t devs < <(get_vlsgm2_devices 2)
+    mapfile -t devs < <(get_vlsgm2_devices 1)
     run_multicam preview "${devs[@]}"
 
 elif [ "$TEST_MODE" = "MULTICAMx8" ]; then
     echo "Start $TEST_MODE Preview...."
     mapfile -t devs0 < <(get_vlsgm2_devices 0)
-    mapfile -t devs2 < <(get_vlsgm2_devices 2)
+    mapfile -t devs2 < <(get_vlsgm2_devices 1)
     run_multicam preview "${devs0[@]}" "${devs2[@]}"
 
 else

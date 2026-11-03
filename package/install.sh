@@ -70,7 +70,8 @@ echo ""
 # Step 2: Install camera userspace stack
 # ---------------------------------------------------------------------------
 info "Installing camera userspace stack..."
-apt install -y "${CAMERA_DEB}" || error "Camera stack installation failed."
+# The package version may be unchanged when repackaging board configuration.
+apt install -y --reinstall "${CAMERA_DEB}" || error "Camera stack installation failed."
 info "Camera stack installed."
 echo ""
 

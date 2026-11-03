@@ -375,6 +375,12 @@ do_package() {
     echo "[package] Copying staging artifacts ..."
     cp -a "${OUT_DIR}/staging/." "${DEB_WORK}/"
 
+    # Packaging-only runs must use the checked-out TN camera configuration.
+    local HAL_CONFIG="${DEB_WORK}/etc/camera/ipu75xa"
+    mkdir -p "${HAL_CONFIG}/sensors"
+    cp "${SCRIPT_DIR}/tn-ipu7-camera-hal-config/ipu75xa/libcamhal_configs.json" "${HAL_CONFIG}/"
+    cp "${SCRIPT_DIR}/tn-ipu7-camera-hal-config/ipu75xa/sensors/"*.json "${HAL_CONFIG}/sensors/"
+
     # -P preserves symlink chains (libfoo.so → libfoo.so.1 → libfoo.so.1.0.0)
     echo "[package] Copying ipu7-camera-bins libraries ..."
     cp -P "${BINS}/lib/"*.so* "${DEB_WORK}/usr/lib/"
@@ -400,10 +406,10 @@ Version: 1.0
 Architecture: amd64
 Maintainer: TechNexion <support@technexion.com>
 Depends: libgstreamer1.0-0, gstreamer1.0-plugins-base, libdrm2, libva2, gstreamer1.0-vaapi, gstreamer1.0-plugins-bad, libjsoncpp25
-Description: Intel IPU7 Camera Stack for Panther Lake (TEVS AR0234)
+Description: Intel IPU7 Camera Stack for Panther Lake
  Includes ipu7-camera-bins ISP libraries, ipu7-camera-hal,
  icamerasrc GStreamer plugin, and TEVS sensor configuration.
- Supports TEVS AR0234 camera on CSI port 0 and CSI port 2.
+ Supports TechNexion TEVS cameras on CSI ports 0 and 2.
 EOF
 
     # postinst: refresh linker cache and clear GStreamer plugin registry so

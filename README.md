@@ -15,13 +15,15 @@ The build process produces a self-contained deployment bundle containing:
 |---|---|---|
 | `main` | Standard TechNexion Panther Lake build | `main` |
 | `lexcom` | Lexcom-specific build | `lexcom` |
+| `biostar` | BIOSTAR BIPTL-IHT, TEVS AR0821 on CSI port 0 | `biostar` |
 
 Kernel configurations and patches are provided by:
 
 [TechNexion-Vision/tn-intel-linux-kernel-overlay](https://github.com/TechNexion-Vision/tn-intel-linux-kernel-overlay)
 
-The matching kernel overlay branch is selected automatically by
-`ptl-camera.sh`.
+The kernel overlay branch is pinned in `ptl-camera.sh`. The `biostar`
+branch clones the overlay's `biostar` branch into
+`ptl-camera-out/tn-intel-linux-kernel-overlay`.
 
 ## Build Requirements
 
@@ -121,3 +123,22 @@ stack.
 - Camera firmware is not included; the target operating system provides the
   required firmware.
 - Upstream Intel camera components remain subject to their respective licenses.
+
+## BIOSTAR BIPTL-IHT
+
+Use the `biostar` branch for BIPTL-IHT with TEVS AR0821 on CAM_CONN1.
+The camera uses CSI port 0, I2C bus 1, and address 0x48. In BIOS, set
+Camera1's GPIO Pin 1 Function to **Reset** (GPP_C8 / CAM_CONN1 pin 17).
+The BIOS must provide working IPU7 CSE firmware.
+
+Build with `./ptl-camera.sh --all`, or run `./ptl-camera.sh` to repackage
+an existing build. Both paths include this branch's camera configuration.
+After installation and reboot, the camera name for the launch script is
+`tevs-ar0821`:
+
+```bash
+launch_video_pipeline_ptl.sh tevs-ar0821 1280x720 UYVY
+```
+
+On the tested board, the sensor probed successfully and a headless
+1280x720 UYVY pipeline captured 30 frames.

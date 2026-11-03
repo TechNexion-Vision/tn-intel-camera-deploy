@@ -291,6 +291,23 @@ DOCKER_SCRIPT
 # To force a rebuild, delete the existing debs:
 #   rm -f ptl-camera-out/tn-intel-linux-kernel-overlay/build/linux-image-*.deb
 # ---------------------------------------------------------------------------
+select_kernel_deb() {
+    local dir="$1" deb
+    local -a debs=()
+
+    for deb in "${dir}"/linux-image-*.deb; do
+        [ -f "${deb}" ] || continue
+        [[ "$(basename "${deb}")" == *-dbg* ]] && continue
+        debs+=("${deb}")
+    done
+
+    case ${#debs[@]} in
+        0) return 1 ;;
+        1) printf '%s\n' "${debs[0]}" ;;
+        *) echo "ERROR: Multiple kernel image debs in ${dir}: ${debs[*]}" >&2; return 2 ;;
+    esac
+}
+
 do_build_kernel() {
     if [ ! -d "${KERNEL_DIR}" ]; then
         echo "ERROR: Kernel repo not found at ${KERNEL_DIR}"
@@ -299,12 +316,14 @@ do_build_kernel() {
     fi
 
     # Check for an existing non-dbg image deb; skip if found.
-    local existing
-    existing=$(ls "${KERNEL_DIR}/linux-image-"*.deb 2>/dev/null | grep -v '\-dbg' | head -1 || true)
-    if [ -n "${existing}" ]; then
+    local existing status
+    if existing=$(select_kernel_deb "${KERNEL_DIR}"); then
         echo "[kernel] SKIP build — deb already exists: $(basename "${existing}")"
         echo "  To rebuild: rm ${KERNEL_DIR}/linux-image-*.deb"
         return
+    else
+        status=$?
+        [ "${status}" -eq 1 ] || exit "${status}"
     fi
 
     echo "[kernel] Building kernel deb (this may take 30+ minutes) ..."
@@ -420,19 +439,21 @@ EOF
 do_bundle() {
     echo "[bundle] Creating tn-camera-ptl.tar.gz ..."
 
-    local KERNEL_DEB
-    KERNEL_DEB=$(ls "${KERNEL_DIR}/linux-image-"*.deb 2>/dev/null | grep -v '\-dbg' | head -1 || true)
+    local KERNEL_DEB status
+    if KERNEL_DEB=$(select_kernel_deb "${KERNEL_DIR}"); then
+        :
+    else
+        status=$?
+        echo "ERROR: Kernel deb missing or ambiguous in ${KERNEL_DIR}/"
+        echo "  Run: ./ptl-camera.sh --all or remove stale kernel debs"
+        exit "${status}"
+    fi
     local CAMERA_DEB="${OUT_DIR}/ipu7-camera-ptl.deb"
     local INSTALL_SH="${SCRIPT_DIR}/package/install.sh"
     local PKG="tn-camera-ptl"
     local PKG_DIR="${OUT_DIR}/${PKG}"
     local TAR="${OUT_DIR}/${PKG}.tar.gz"
 
-    if [ -z "${KERNEL_DEB}" ]; then
-        echo "ERROR: Kernel deb not found in ${KERNEL_DIR}/"
-        echo "  Run: ./ptl-camera.sh --all"
-        exit 1
-    fi
     if [ ! -f "${CAMERA_DEB}" ]; then
         echo "ERROR: Camera deb not found: ${CAMERA_DEB}"
         exit 1

@@ -32,13 +32,29 @@ echo ""
 # ---------------------------------------------------------------------------
 # Locate debs
 # ---------------------------------------------------------------------------
-KERNEL_DEB=$(ls "${SCRIPT_DIR}"/linux-image-*.deb 2>/dev/null | grep -v '\-dbg' | head -1)
-CAMERA_DEB=$(ls "${SCRIPT_DIR}"/ipu7-camera-ptl.deb 2>/dev/null | head -1)
+kernel_debs=()
+for deb in "${SCRIPT_DIR}"/linux-image-*.deb; do
+    [ -f "${deb}" ] || continue
+    [[ "$(basename "${deb}")" == *-dbg* ]] && continue
+    kernel_debs+=("${deb}")
+done
 
-[ -z "${KERNEL_DEB}" ]  && error "linux-image-*.deb not found in ${SCRIPT_DIR}"
-[ -z "${CAMERA_DEB}" ]  && error "ipu7-camera-ptl.deb not found in ${SCRIPT_DIR}"
+case ${#kernel_debs[@]} in
+    0) error "linux-image-*.deb not found in ${SCRIPT_DIR}" ;;
+    1) KERNEL_DEB=${kernel_debs[0]} ;;
+    *) error "Multiple kernel image debs in ${SCRIPT_DIR}: ${kernel_debs[*]}" ;;
+esac
+
+CAMERA_DEB="${SCRIPT_DIR}/ipu7-camera-ptl.deb"
+[ -f "${CAMERA_DEB}" ] || error "ipu7-camera-ptl.deb not found in ${SCRIPT_DIR}"
+
+KERNEL_PACKAGE=$(dpkg-deb -f "${KERNEL_DEB}" Package) || error "Cannot read kernel package name from ${KERNEL_DEB}"
+[[ "${KERNEL_PACKAGE}" =~ ^linux-image-[a-z0-9][a-z0-9.+_~-]*$ ]] || \
+    error "Unexpected kernel package name: ${KERNEL_PACKAGE}"
+KERNEL_RELEASE=${KERNEL_PACKAGE#linux-image-}
 
 info "Kernel deb : $(basename "${KERNEL_DEB}")"
+info "Kernel release: ${KERNEL_RELEASE}"
 info "Camera deb : $(basename "${CAMERA_DEB}")"
 echo ""
 
@@ -61,20 +77,12 @@ echo ""
 # ---------------------------------------------------------------------------
 # Step 3: GRUB modifications
 # ---------------------------------------------------------------------------
-GRUB_CFG=/etc/default/grub
+GRUB_CFG=${GRUB_CFG:-/etc/default/grub}
 
 info "Backing up ${GRUB_CFG} → ${GRUB_CFG}.bak"
 cp "${GRUB_CFG}" "${GRUB_CFG}.bak"
 
-# 3a: Set GRUB_DEFAULT=0 so the newest kernel is the default boot entry
-if grep -q '^GRUB_DEFAULT=' "${GRUB_CFG}"; then
-    sed -i 's/^GRUB_DEFAULT=.*/GRUB_DEFAULT=0/' "${GRUB_CFG}"
-else
-    echo 'GRUB_DEFAULT=0' >> "${GRUB_CFG}"
-fi
-info "GRUB_DEFAULT set to 0."
-
-# 3b: Add i915.force_probe=7d51 to kernel cmdline (idempotent)
+# 3a: Add i915.force_probe=7d51 to kernel cmdline (idempotent)
 if grep -q 'i915.force_probe=7d51' "${GRUB_CFG}"; then
     warn "i915.force_probe=7d51 already present in GRUB_CMDLINE_LINUX_DEFAULT, skipping."
 else
@@ -85,8 +93,48 @@ else
     info "i915.force_probe=7d51 added to GRUB_CMDLINE_LINUX_DEFAULT."
 fi
 
-# 3c: Update GRUB
+# 3b: Generate the menu before selecting the installed kernel's entry ID.
 info "Running update-grub..."
+update-grub
+GRUB_MENU_CFG=${GRUB_MENU_CFG:-/boot/grub/grub.cfg}
+[ -f "${GRUB_MENU_CFG}" ] || error "GRUB menu not found: ${GRUB_MENU_CFG}"
+
+kernel_id_prefix="gnulinux-${KERNEL_RELEASE}-advanced-"
+mapfile -t kernel_ids < <(awk -F"'" -v prefix="${kernel_id_prefix}" '
+    $1 ~ /^[[:space:]]*menuentry[[:space:]]/ {
+        for (i = 2; i <= NF; i += 2)
+            if (index($i, prefix) == 1) print $i
+    }
+' "${GRUB_MENU_CFG}")
+[ "${#kernel_ids[@]}" -eq 1 ] || \
+    error "Expected one GRUB entry for ${KERNEL_RELEASE}, found ${#kernel_ids[@]} in ${GRUB_MENU_CFG}"
+
+kernel_id=${kernel_ids[0]}
+parent_id="gnulinux-advanced-${kernel_id#"${kernel_id_prefix}"}"
+mapfile -t parent_ids < <(awk -F"'" -v id="${parent_id}" '
+    $1 ~ /^[[:space:]]*submenu[[:space:]]/ {
+        for (i = 2; i <= NF; i += 2)
+            if ($i == id) print $i
+    }
+' "${GRUB_MENU_CFG}")
+
+case ${#parent_ids[@]} in
+    1) grub_default_id="${parent_id}>${kernel_id}" ;;
+    0)
+        if grep -Eq '^[[:space:]]*submenu .*gnulinux-advanced-' "${GRUB_MENU_CFG}"; then
+            error "GRUB submenu ${parent_id} not found for ${KERNEL_RELEASE}"
+        fi
+        grub_default_id=${kernel_id}
+        ;;
+    *) error "Multiple GRUB submenus with ID ${parent_id}" ;;
+esac
+
+if grep -q '^GRUB_DEFAULT=' "${GRUB_CFG}"; then
+    sed -i "s|^GRUB_DEFAULT=.*|GRUB_DEFAULT=\"${grub_default_id}\"|" "${GRUB_CFG}"
+else
+    printf 'GRUB_DEFAULT="%s"\n' "${grub_default_id}" >> "${GRUB_CFG}"
+fi
+info "GRUB_DEFAULT set to ${grub_default_id}."
 update-grub
 info "GRUB updated."
 echo ""
